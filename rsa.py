@@ -2,6 +2,7 @@ import crypto_functions as cf
 
 
 def rsa(p: int, q: int, e: int, message: int):
+"""Demo's encryption and decryption with the given arguments."""
 
     print("RSA")
 
@@ -29,3 +30,8 @@ def rsa(p: int, q: int, e: int, message: int):
     # decrypt c to verify plaintext m
     m = c**d % n
     print("Decrypted plaintext:", m)
+
+def keys():
+""" Return a dict containing private and public key parameters.""" 
+	
+	pass

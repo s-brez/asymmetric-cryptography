@@ -2,6 +2,7 @@ import crypto_functions as cf
 
 
 def elgamal(p: int, g: int, x: int, r: int, message: int):
+"""Demo's encryption and decryption with the given arguments."""
 
     print("ElGamal")
 
@@ -36,3 +37,8 @@ def elgamal(p: int, g: int, x: int, r: int, message: int):
     # decrypt c1 and c2 to verify m
     m = k1 * c2 % p
     print("Decrypted plaintext:", m, "\n")
+
+def keys():
+""" Return a dict containing private and public key parameters.""" 
+	
+	pass

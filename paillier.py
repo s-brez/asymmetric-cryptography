@@ -2,6 +2,7 @@ import crypto_functions as cf
 
 
 def paillier(p: int, q: int, m: int, g: int, r: int):
+    """Dems encryption and decryption with the given arguments."""
 
     print("Paillier")
 
@@ -33,5 +34,24 @@ def paillier(p: int, q: int, m: int, g: int, r: int):
     print("Decrypted plaintext:", p)
 
 
-def keys_only():
+def keys(p: int, q: int, g: int):
+    """ Return a dict containing private and public key parameters."""
     
+    n = p * q
+    ƛ = cf.lcm(p - 1, q - 1)
+    k = cf.L((g**ƛ) % (n**2), n)
+    μ = cf.inverse_mod(k, n)
+
+    return {"n": n, "g": g, "ƛ": ƛ, "μ": μ}
+
+
+def encrypt(n: int, g: int, r: int, m: int):
+    """ Return encrypted ciphertext."""
+    
+    return g**m * r**n % n**2
+
+
+def decrypt(ƛ: int, μ: int, n: int, c: int):
+    """ Return decrypted plaintext."""
+
+    return cf.L(c**ƛ % n**2, n) * μ % n

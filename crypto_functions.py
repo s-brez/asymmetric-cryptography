@@ -1,4 +1,7 @@
-def shift_cypher(message, letters=None):
+def shift_cipher(message, letters=None):
+    """Shift-by-n cipher breaker. Defaults to abx..xyz if no alphabet 
+    provided."""
+
     if letters is None:
         letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     message = message.upper()
@@ -17,6 +20,8 @@ def shift_cypher(message, letters=None):
 
 
 def gcd(a, b):
+    """ Return greatest common divisor of a and b."""
+
     if(b == 0):
         return a
     else:
@@ -24,6 +29,8 @@ def gcd(a, b):
 
 
 def lcm(a, b):
+    """ Return lowest common multiple of a and b"""
+
     if a > b:
         greater = a
     else:
@@ -36,21 +43,27 @@ def lcm(a, b):
     return lcm
 
 
-def L(a, n):
-    return int((a - 1) / n)
+def L(a, b):
+    return int((a - 1) / b)
 
 
-def inverse_mod(a, m):
-    g, x, y = euclidian_GCD(a, m)
-    if g != 1:
-        raise Exception('no inverse mod exists')
-    else:
-        return x % m
+def euclidian_gcd(a, b):
+    """ Return greatest common divisor of a and b."""
 
-
-def euclidian_GCD(a, b):
     if a == 0:
         return (b, 0, 1)
     else:
-        g, x, y = euclidian_GCD(b % a, a)
+        g, x, y = euclidian_gcd(b % a, a)
         return (g, y - (b // a) * x, x)
+
+
+def inverse_mod(a, b):
+    """Return multiplicative modular inverse of a and b."""
+
+    g, x, y = euclidian_gcd(a, b)
+    if g != 1:
+        raise Exception('no inverse mod exists')
+    else:
+        return x % b
+
+
