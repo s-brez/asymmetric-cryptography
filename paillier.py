@@ -36,7 +36,7 @@ def paillier(p: int, q: int, m: int, g: int, r: int):
 
 def keys(p: int, q: int, g: int):
     """ Return a dict containing private and public key parameters."""
-    
+
     n = p * q
     ƛ = cf.lcm(p - 1, q - 1)
     k = cf.L((g**ƛ) % (n**2), n)
@@ -47,7 +47,7 @@ def keys(p: int, q: int, g: int):
 
 def encrypt(n: int, g: int, r: int, m: int):
     """ Return encrypted ciphertext."""
-    
+
     return g**m * r**n % n**2
 
 
