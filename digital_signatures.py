@@ -2,21 +2,21 @@ import rsa
 import elgamal
 
 
-# RSA ################################################################
+RSA ################################################################
 
-# message = 123456
+message = 123456
 
-# # sender generate keys
-# keys = rsa.generate_keys(5563, 3821, 9623)
-# print(keys)
+# sender generate keys
+keys = rsa.generate_keys(5563, 3821, 9623)
+print(keys)
 
-# # sender generates message signature
-# s = rsa.sign(keys['n'], keys['d'], message)
-# print("Signature:", s)
+# sender generates message signature
+s = rsa.sign(keys['n'], keys['d'], message)
+print("Signature:", s)
 
-# # receiver verifies the signiature and message
-# verified = rsa.verify_signature(keys['n'], keys['e'], s, message)
-# print("Message matches signature:", verified)
+# receiver verifies the signiature and message
+verified = rsa.verify_signature(keys['n'], keys['e'], s, message)
+print("Message matches signature:", verified)
 
 # ElGamal #############################################################
 
@@ -40,3 +40,4 @@ verify = elgamal.verify_signature(
 print(
     "\nVerification params v, w:", verify['v'], verify['w'],
     "\nMessage matches signature:", verify['result'])
+
