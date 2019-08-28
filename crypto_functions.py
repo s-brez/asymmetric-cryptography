@@ -1,5 +1,5 @@
-def shift_cipher(message, letters=None):
-    """Shift-by-n cipher breaker. Defaults to abx..xyz if no alphabet 
+def break_shift_cipher(message, letters=None):
+    """Shift-by-n cipher breaker. Defaults to abx..xyz if no alphabet
     provided."""
 
     if letters is None:
@@ -62,8 +62,6 @@ def inverse_mod(a, b):
 
     g, x, y = euclidian_gcd(a, b)
     if g != 1:
-        raise Exception('no inverse mod exists')
+        raise Exception('No inverse mod exists')
     else:
         return x % b
-
-

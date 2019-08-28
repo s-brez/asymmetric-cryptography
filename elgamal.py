@@ -1,8 +1,8 @@
 import crypto_functions as cf
 
 
-def elgamal(p: int, g: int, x: int, r: int, message: int):
-"""Demo's encryption and decryption with the given arguments."""
+def elgamal_demo(p: int, g: int, x: int, r: int, message: int):
+    """Demo's encryption and decryption with the given arguments."""
 
     print("ElGamal")
 
@@ -38,7 +38,28 @@ def elgamal(p: int, g: int, x: int, r: int, message: int):
     m = k1 * c2 % p
     print("Decrypted plaintext:", m, "\n")
 
-def keys():
-""" Return a dict containing private and public key parameters.""" 
-	
-	pass
+
+def generate_keys(p: int, g: int, x: int):
+    """ Return a dict containing private and public key parameters."""
+
+    y = g**x % p
+
+    return {"p": p, "g": g, "y": y, "x": x}
+
+
+def sign(g: int, k: int, p: int, x: int, m: int):
+    """ Return the signature parameters for a given messsage."""
+
+    r = g**k % p
+    k1 = cf.inverse_mod(k, p - 1)
+    val = k1 * (m - (x * r))
+    s = val % (p - 1)
+    return {"r": r, "s": s}
+
+
+def verify_signature(g: int, y: int, p: int, r: int, s: int, m: int):
+    """ Return verification params and boolean result."""
+
+    v = g**m % p
+    w = ((y**r) * (r**s)) % p
+    return {"result": v == w, "v": v, "w": w}

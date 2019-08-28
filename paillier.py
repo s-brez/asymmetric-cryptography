@@ -1,7 +1,7 @@
 import crypto_functions as cf
 
 
-def paillier(p: int, q: int, m: int, g: int, r: int):
+def paillier_demo(p: int, q: int, m: int, g: int, r: int):
     """Dems encryption and decryption with the given arguments."""
 
     print("Paillier")
@@ -34,7 +34,7 @@ def paillier(p: int, q: int, m: int, g: int, r: int):
     print("Decrypted plaintext:", p)
 
 
-def keys(p: int, q: int, g: int):
+def generate_keys(p: int, q: int, g: int):
     """ Return a dict containing private and public key parameters."""
 
     n = p * q

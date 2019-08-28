@@ -1,9 +1,8 @@
 import crypto_functions as cf
 
 
-def rsa(p: int, q: int, e: int, message: int):
-"""Demo's encryption and decryption with the given arguments."""
-
+def rsa_demo(p: int, q: int, e: int, message: int):
+    """Demo's encryption and decryption with the given arguments."""
     print("RSA")
 
     # find public key param n
@@ -31,7 +30,37 @@ def rsa(p: int, q: int, e: int, message: int):
     m = c**d % n
     print("Decrypted plaintext:", m)
 
-def keys():
-""" Return a dict containing private and public key parameters.""" 
-	
-	pass
+
+def generate_keys(p: int, q: int, e: int):
+    """ Return a dict containing private and public key parameters."""
+
+    n = p * q
+    d = cf.inverse_mod(e, (p - 1) * (q - 1))
+
+    return {"n": n, "e": e, "d": d}
+
+
+def encrypt(n: int, e: int, m: int):
+    """ Return encrypted ciphertext."""
+
+    return m**e % n
+
+
+def decrypt(n: int, d: int, c: int):
+    """ Return decrypted plaintext."""
+
+    return c**d % n
+
+
+def sign(n: int, d: int, m: int):
+    """ Return the signature for a given messsage."""
+
+    return m**d % n
+
+
+def verify_signature(n: int, e: int, s: int, m: int):
+    """ Return true if signature matches message."""
+
+    v = s**e % n
+    print("Verfied m:", v)
+    return v == m
