@@ -2,8 +2,12 @@ import rsa
 import elgamal
 
 
-RSA ################################################################
+# Note: RSA will take a while (5mins+) to complete on a non-workstation PC.
 
+
+# RSA ################################################################
+
+print("RSA digital signature demo.\n")
 message = 123456
 
 # sender generate keys
@@ -18,8 +22,10 @@ print("Signature:", s)
 verified = rsa.verify_signature(keys['n'], keys['e'], s, message)
 print("Message matches signature:", verified)
 
+
 # ElGamal #############################################################
 
+print("ElGamal digital signature demo.\n")
 message = 4567
 
 # sender generate keys
@@ -40,4 +46,3 @@ verify = elgamal.verify_signature(
 print(
     "\nVerification params v, w:", verify['v'], verify['w'],
     "\nMessage matches signature:", verify['result'])
-
