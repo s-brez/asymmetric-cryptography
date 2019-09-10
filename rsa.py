@@ -36,8 +36,9 @@ def generate_keys(p: int, q: int, e: int):
 
     n = p * q
     d = cf.inverse_mod(e, (p - 1) * (q - 1))
+    phi_n = (p - 1) * (q - 1)
 
-    return {"n": n, "e": e, "d": d}
+    return {"n": n, "e": e, "d": d, "phi_n": phi_n}
 
 
 def encrypt(n: int, e: int, m: int):

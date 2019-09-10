@@ -5,6 +5,7 @@ import crypto_functions as cf
 
 # RSA text message signature scheme ##################################
 
+
 message = "Cryptocurrencies continue to grow in price and size. Knowledge about Bitcoin, Litecoin, Ethereum, and others has spread through the entire world. Cryptocurrencies are providing such features and tools that simplify our lives. They are changing the way things work. Some people fear the changes. But changes are not always bad. Cryptocurrencies are modifying our lives, and the way industries develop. There’s no doubt that cryptocurrencies are disrupting and affecting the global economy in many ways."
 print("Message:", message)
 
@@ -25,7 +26,8 @@ print("Keys:", keys)
 # Sender signs the message with the private key
 # s = rsa.sign(keys['n'], keys['d'], msg_hash)
 
-# Use wolfram alpha to sign (m^d mod n), python slow for large number operations
+# Used wolfram alpha to manually sign (m^d mod n), as python is way too slow
+# for this operation. Otherwise use s = m^d mod n
 s = 126798804286385130870848966135941566606057839336135951340495096277825470279796
 print("Signature:", s)
 
@@ -37,5 +39,5 @@ print("Message matches signature:", verify)
 rehashed_msg = hashlib.md5(message.encode('utf-8')).hexdigest()
 print("Re-hashed message:", rehashed_msg)
 print(
-	"Original message hash matches senders second hashing:", 
-	int(rehashed_msg, 16) == msg_hash)
+    "Original message hash matches senders second hashing:", 
+    int(rehashed_msg, 16) == msg_hash)
