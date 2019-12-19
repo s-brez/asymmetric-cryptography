@@ -1,6 +1,6 @@
 def break_shift_cipher(message, letters=None):
-    """Shift-by-n cipher breaker. Defaults to abx..xyz if no alphabet
-    provided."""
+    """Shift-by-n cipher breaker. Defaults to abx..xyz roman characters
+    if no alphabet provided."""
 
     if letters is None:
         letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

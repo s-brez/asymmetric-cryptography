@@ -26,8 +26,8 @@ print("Keys:", keys)
 # Sender signs the message with the private key
 # s = rsa.sign(keys['n'], keys['d'], msg_hash)
 
-# Used wolfram alpha to manually sign (m^d mod n), as python is way too slow
-# for this operation. Otherwise use s = m^d mod n
+# Used wolfram alpha to find signature s = m^d mod n, python is way too slow
+# for this operation.
 s = 126798804286385130870848966135941566606057839336135951340495096277825470279796
 print("Signature:", s)
 
@@ -35,7 +35,7 @@ print("Signature:", s)
 verify = rsa.verify_signature(keys['n'], keys['e'], s, msg_hash)
 print("Message matches signature:", verify)
 
-# Receiver hashes the original message to check it matches the given hash 
+# Receiver hashes the original message to check it matches the given hash
 rehashed_msg = hashlib.md5(message.encode('utf-8')).hexdigest()
 print("Re-hashed message:", rehashed_msg)
 print(
